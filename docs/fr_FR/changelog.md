@@ -2,7 +2,7 @@ ChangeLog
 ===
 
 Version mars 2019
-==
+---
 
 Création du plugin
 
