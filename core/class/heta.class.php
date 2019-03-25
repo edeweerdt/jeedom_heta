@@ -83,6 +83,7 @@ class heta extends eqLogic {
 		}
 		$temperature->setEqLogic_id($this->getId());
 		$temperature->setLogicalId('temperature');
+		$temperature->setDisplay('generic_type', 'THERMOSTAT_TEMPERATURE');
 		$temperature->setType('info');
 		$temperature->setSubType('numeric');
 		$temperature->save();	
