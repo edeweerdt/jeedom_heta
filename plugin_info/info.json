@@ -10,8 +10,8 @@
 	"hasDependency" : false,
 	"hasOwnDeamon" : false,
 	"maxDependancyInstallTime" : 0,
-	"changelog" : "https://edeweerdt.github.io/plugin-heta/#language#/changelog",
-	"documentation" : "https://edeweerdt.github.io/plugin-heta/#language#/",
+	"changelog" : "https://edeweerdt.github.io/jeedom_heta/#language#/#tocAnchor-1-4",
+	"documentation" : "https://edeweerdt.github.io/jeedom_heta/#language#/",
 	"link" : {
 		"forum":"Lien vers le forum",
 		"video" : "Lien vers une video"
