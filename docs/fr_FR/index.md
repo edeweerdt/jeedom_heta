@@ -3,7 +3,7 @@ Description
 
 Plugin servant au controle d'un poële à pellet Heta.
 
-![Widget](../assets/images/WidgetHeta.png)
+![ScanLine Green 200](../assets/images/heta-scanline-green-200.jpg) ![Widget](../assets/images/WidgetHeta.png)
 
 Prérequis
 =========
@@ -30,6 +30,14 @@ Fonctionnement
 
 Le plugin récupère les informations du poële toutes les minutes.
 
+Compatibilité
+=============
+
+Vérifié:
+-   Heta ScanLine Green 200 [ici](https://heta.dk/en/product/scan-line-green-200/)
+
+A vérifier
+-   Tout équipement utilisant le boitier [Fumis WiRCU](http://www.fumis.si/en/wircu-connection-guide)
 
 RoadMap
 =======
