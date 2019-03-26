@@ -60,13 +60,3 @@ Changelog
 =========
 [Voir la page dédiée](changelog.md)
 
------------
-> Disclaimer:
->
-> Ce plugin est développé à partir d'une analyse des appels fait
-> par l'App mobile.
->
-> Dans la mesure ou le fabricant changerai le fonctionnement, ce
-> plugin pourrait ne plus fonctionner.
->
------------------
