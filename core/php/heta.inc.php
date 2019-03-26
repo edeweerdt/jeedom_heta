@@ -65,11 +65,11 @@ class hetaResult {
             nbErrAllumage =>   $pData->controller->statistic->misfires
         );
         
+        $this->_fan0 = $pData->controller->fans[0];
         $this->_power = $pData->controller->power;
         $this->_temperature0 = $pData->controller->temperatures[0];
     }
 }
-
 
 class fumis {
     /*     * *************************Attributs****************************** */
@@ -177,7 +177,7 @@ class fumis {
 		if ($pContent !== null){
 			$opts['http']['content'] = json_encode($pContent); 
 		}
-        log::add('heta', 'debug', "Fumis request = ".json_encode($opts));
+        //log::add('heta', 'debug', "Fumis request = ".json_encode($opts));
 		return stream_context_create($opts);
 	}
 

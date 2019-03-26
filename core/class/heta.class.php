@@ -34,14 +34,16 @@ class heta extends eqLogic {
 		} else {
 			$eqLogics = array(self::byId($_eqLogic_id));
         }
-		foreach ($eqLogics as $heta) {
-			if ($heta->getIsEnable() == 1) { //vérifie que l'équipement est actif
-				$cmd = $heta->getCmd(null, 'refresh');//retourne la commande "refresh" si elle exxiste
+		foreach ($eqLogics as $eqLogic) {
+			if ($eqLogic->getIsEnable() == 1) {
+                log::add('heta', 'debug', $eqLogic->getHumanName(). ' cron refresh');
+                $eqLogic->getHetaStatus();
+/*				$cmd = $eqLogic->getCmd(null, 'refresh');//retourne la commande "refresh" si elle exxiste
 				if (!is_object($cmd)) {
 				  continue;
 				}
 				$cmd->execCmd(); // la commande existe on la lance
-			}
+*/			}
 		}
     }
 
@@ -284,23 +286,20 @@ class heta extends eqLogic {
         $mac = $this->getConfiguration("mac");
         $fumis = new fumis($mac);
         $hetaStatus = $fumis->getStatus();
-        log::add('heta', 'debug', "Heta [".$mac."] result = ". json_encode($hetaStatus));
-        
+        log::add('heta', 'debug', $this->getHumanName().' Status result: '. json_encode($hetaStatus));
         $this->cmdUpdate($hetaStatus);
     }
     
     public function setHetaConsigne($pOrder) {
         $fumis = new fumis($this->getConfiguration("mac"));
         $hetaStatus = $fumis->setOrder($pOrder);        
-        log::add('heta', 'debug', "Heta [".$this->getConfiguration("mac")."] change order = ". $pOrder);
-        return $hetaStatus;
+        $this->cmdUpdate($hetaStatus);
     }
     
     public function setHetaStart() {
         $fumis = new fumis($this->getConfiguration("mac"));
         $fumis->start();
         $status = $this->checkAndUpdateCmd('actif', true);
-        log::add('heta', 'debug', "Heta [".$this->getConfiguration("mac")."] start");
         $this->cmdUpdate($status);
     }
     
@@ -308,7 +307,6 @@ class heta extends eqLogic {
         $fumis = new fumis($this->getConfiguration("mac"));
         $fumis->stop();
         $status = $this->checkAndUpdateCmd('actif', false);
-        log::add('heta', 'debug', "Heta [".$this->getConfiguration("mac")."] stop");
         $this->cmdUpdate($status);
     }
     /*     * **********************Getteur Setteur*************************** */
@@ -333,9 +331,9 @@ class hetaCmd extends cmd {
     public function execute($_options = array()) {
         $eqLogic = $this->getEqLogic();
         $action = $this->getLogicalId();
-        log::add('heta','debug','Heta Execute "'.$action.'" with options = '. json_encode($_options));
 		switch ($action) {		
 			case 'refresh':
+                log::add('heta', 'info', $this->getHumanName(). ' action Refresh');
                 $eqLogic->getHetaStatus();
                 $eqLogic->refreshWidget();
                 break;
@@ -344,16 +342,22 @@ class hetaCmd extends cmd {
                     return;
                 }
                 $changed = ($eqLogic->getCmd(null, 'consigne')->execCmd() != $_options['slider']);
+                log::add('heta', 'info', $this->getHumanName(). ' thermostat à '.$_options['slider']);
                 $eqLogic->getCmd(null, 'consigne')->event($_options['slider']);
                 if ($changed){
                     $eqLogic->setHetaConsigne($_options['slider']);
                 }
                 break;
             case 'on':
+                log::add('heta', 'info', $this->getHumanName(). ' démarrage');
                 $eqLogic->setHetaStart();
                 break;
             case 'off':
+                log::add('heta', 'info', $this->getHumanName(). ' arret');
                 $eqLogic->setHetaStop();
+                break;
+            default:
+                log::add('heta', 'info', $this->getHumanName(). ' action inconnue : '.$action);
                 break;
 		}
         return;
