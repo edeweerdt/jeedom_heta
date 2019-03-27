@@ -10,7 +10,7 @@
 	"hasDependency" : false,
 	"hasOwnDeamon" : false,
 	"maxDependancyInstallTime" : 0,
-	"changelog" : "https://edeweerdt.github.io/jeedom_heta/#language#/changelog.md",
+	"changelog" : "https://edeweerdt.github.io/jeedom_heta/#language#/changelog",
 	"documentation" : "https://edeweerdt.github.io/jeedom_heta/#language#/",
 	"link" : {
 		"forum":"Lien vers le forum",
