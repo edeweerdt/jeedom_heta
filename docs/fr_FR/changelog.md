@@ -11,6 +11,9 @@ Création du plugin
 -   Controle de la température
 -   Documentation
 
+Fix 29 octobre 2019
+---
 
+-   Correction paramètres après sauvegarde
 
 [Documentation](index.md)

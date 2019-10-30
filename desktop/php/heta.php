@@ -116,12 +116,13 @@ foreach (object::all() as $object) {
 				<table id="table_cmd" class="table table-bordered table-condensed">
 			    <thead>
 					<tr>
-					<th style="width:230px;">{{Nom}}</th>
-					<th style="width:140px;">{{Type}}</th>
-					<!--th>{{Valeur}}</th-->
+					<th style="width:30px;">{{Id}}</th>
+					<th style="width:160px;">{{Nom}}</th>
+					<th style="width:120px;">{{Type}}</th>
+					<!--th style="width:240px;">{{Valeur}}</th-->
 					<th style="width:100px;">{{Unité}}</th>
 					<th style="width:240px;">{{Configuration}}</th>
-					<th style="width:150px;">{{Action}}</th>
+					<th style="width:120px;">{{Action}}</th>
 					</tr>
 			    </thead>
 					<tbody>

@@ -76,15 +76,15 @@ class heta extends eqLogic {
         $temperature = $this->getCmd(null, 'temperature');
 		if (!is_object($temperature)) {
 			$temperature = new hetaCmd();
-            $temperature->setTemplate('dashboard','line');
-            $temperature->setTemplate('mobile','line');
+    		$temperature->setLogicalId('temperature');
+            $temperature->setTemplate('dashboard','tile');
+            $temperature->setTemplate('mobile','tile');
             $temperature->setIsHistorized(true);
             $temperature->setIsVisible(true);
             $temperature->setUnite('°C');
 			$temperature->setName(__('Température', __FILE__));
 		}
 		$temperature->setEqLogic_id($this->getId());
-		$temperature->setLogicalId('temperature');
 		$temperature->setDisplay('generic_type', 'THERMOSTAT_TEMPERATURE');
 		$temperature->setType('info');
 		$temperature->setSubType('numeric');
@@ -94,29 +94,29 @@ class heta extends eqLogic {
         $consigne = $this->getCmd(null, 'consigne');
 		if (!is_object($consigne)) {
 			$consigne = new hetaCmd();
+    		$consigne->setLogicalId('consigne');
             $consigne->setIsVisible(0);
             $consigne->setUnite('°C');
 			$consigne->setName(__('Consigne', __FILE__));
             $consigne->setConfiguration('historizeMode','none');
+    		$consigne->setConfiguration('maxValue', 40);
+    		$consigne->setConfiguration('minValue', 10);
 		}
         $consigne->setEqLogic_id($this->getId());
-		$consigne->setLogicalId('consigne');
 		$consigne->setDisplay('generic_type', 'THERMOSTAT_SETPOINT');
 		$consigne->setType('info');
 		$consigne->setSubType('numeric');
-		$consigne->setConfiguration('maxValue', 40);
-		$consigne->setConfiguration('minValue', 10);
 		$consigne->save();	
 		
         // INFO données brutes
         $data = $this->getCmd(null, 'data');
 		if (!is_object($data)) {
 			$data = new hetaCmd();
+    		$data->setLogicalId('data');
             $data->setIsVisible(false);
 			$data->setName(__('Data', __FILE__));
 		}
 		$data->setEqLogic_id($this->getId());
-		$data->setLogicalId('data');
 		$data->setType('info');
 		$data->setSubType('string');
 		$data->save();
@@ -126,11 +126,11 @@ class heta extends eqLogic {
 		if (!is_object($etat)) {
 			$etat = new hetaCmd();
             $etat->setIsVisible(true);
+    		$etat->setLogicalId('etat');
             $etat->setTemplate('dashboard','line');
             $etat->setTemplate('mobile','line');
 			$etat->setName(__('Etat', __FILE__));
 		}
-		$etat->setLogicalId('etat');
 		$etat->setEqLogic_id($this->getId());
 		$etat->setType('info');
 		$etat->setSubType('string');
@@ -140,12 +140,12 @@ class heta extends eqLogic {
         $etatId = $this->getCmd(null, 'etatId');
 		if (!is_object($etatId)) {
 			$etatId = new hetaCmd();
+    		$etatId->setLogicalId('etatId');
             $etatId->setIsVisible(false);
             $etatId->setTemplate('dashboard','line');
             $etatId->setTemplate('mobile','line');
             $etatId->setName(__('Etat ID', __FILE__));
 		}
-		$etatId->setLogicalId('etatId');
 		$etatId->setEqLogic_id($this->getId());
 		$etatId->setType('info');
 		$etatId->setSubType('numeric');
@@ -155,25 +155,25 @@ class heta extends eqLogic {
         $actif = $this->getCmd(null, 'actif');
 		if (!is_object($actif)) {
 			$actif = new hetaCmd();
+    		$actif->setLogicalId('actif');
 			$actif->setName(__('Actif', __FILE__));
-			$actif->setIsVisible(0);
+			$actif->setIsVisible(1);
 			$actif->setIsHistorized(1);
 		}
 		$actif->setDisplay('generic_type', 'THERMOSTAT_STATE');
 		$actif->setEqLogic_id($this->getId());
 		$actif->setType('info');
 		$actif->setSubType('binary');
-		$actif->setLogicalId('actif');
 		$actif->save();
         
         // COMMANDE rafraichissement des données
 		$refresh = $this->getCmd(null, 'refresh');
 		if (!is_object($refresh)) {
 			$refresh = new hetaCmd();
+    		$refresh->setLogicalId('refresh');
 			$refresh->setName(__('Rafraichir', __FILE__));
 		}
 		$refresh->setEqLogic_id($this->getId());
-		$refresh->setLogicalId('refresh');
 		$refresh->setType('action');
 		$refresh->setSubType('other');
 		$refresh->save();
@@ -182,26 +182,27 @@ class heta extends eqLogic {
         $thermostat = $this->getCMD(null, 'thermostat');
         if (!is_object($thermostat)) {
             $thermostat = new hetaCmd();
+    		$thermostat->setLogicalId('thermostat');
             $thermostat->setTemplate('dashboard','thermostat');
             $thermostat->setTemplate('mobile','thermostat');
             $thermostat->setUnite('°C');
 			$thermostat->setName(__('Thermostat', __FILE__));
             $thermostat->setIsVisible(1);
+    		$thermostat->setConfiguration('maxValue', 40);
+    		$thermostat->setConfiguration('minValue', 10);
         }
 	    $thermostat->setDisplay('generic_type','THERMOSTAT_SET_SETPOINT');
         $thermostat->setEqLogic_id($this->getId());
-		$thermostat->setLogicalId('thermostat');
 		$thermostat->setType('action');
 		$thermostat->setSubType('slider');
         $thermostat->setValue($consigne->getId());
-		$thermostat->setConfiguration('maxValue', 40);
-		$thermostat->setConfiguration('minValue', 10);
 		$thermostat->save();
         
         //COMMANDE arret
 		$off = $this->getCmd(null, 'off');
 		if (!is_object($off)) {
 			$off = new hetaCmd();
+    		$off->setLogicalId('off');
 			$off->setIsVisible(1);
 			$off->setName(__('Off', __FILE__));
 		}
@@ -209,7 +210,6 @@ class heta extends eqLogic {
 		$off->setEqLogic_id($this->getId());
 		$off->setType('action');
 		$off->setSubType('other');
-		$off->setLogicalId('off');
         $off->setValue($actif->getId());
 		$off->save();
         
@@ -217,6 +217,7 @@ class heta extends eqLogic {
 		$on = $this->getCmd(null, 'on');
 		if (!is_object($on)) {
 			$on = new hetaCmd();
+    		$on->setLogicalId('on');
 			$on->setIsVisible(1);
 			$on->setName(__('On', __FILE__));
 		}
@@ -224,7 +225,6 @@ class heta extends eqLogic {
 		$on->setEqLogic_id($this->getId());
 		$on->setType('action');
 		$on->setSubType('other');
-		$on->setLogicalId('on');
         $on->setValue($actif->getId());
 		$on->save();
     }
