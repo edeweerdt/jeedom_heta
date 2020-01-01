@@ -49,7 +49,9 @@ class hetaResult {
     public $_temperature0;
                     
     function hetaResult($pData) {
-        //$this->data = $pData;      
+        //$this->data = $pData;
+        //$this->message = $pData->message;
+        //$this->code = $pData->code;
         $this->etat = self::ETAT[$pData->controller->status];
         $this->etatId = $pData->controller->status;
         $this->temperature = $pData->controller->temperatures[0]->actual;
@@ -115,6 +117,13 @@ class fumis {
         
         $hetaResult = new hetaResult($inData);
         return $hetaResult;
+    }
+    
+    protected function _getMessage($strData) {
+        $inData = json_decode($strData);
+        
+        $message = $inData->message;
+        return $message;
     }
     
     protected function _prepareCommand($pCmd, $pValue = null) {
@@ -185,7 +194,8 @@ class fumis {
         if (($stream = file_get_contents(self::FUMISURL, false, $pContext)) !== false) {
             return $stream;
         }
-        log::add('heta', 'error', "Fumis Error");
+        //$msg = $this->_getMessage($stream);
+        log::add('heta', 'error', "Fumis Error");            
         //throw new Exception(__('Erreur d\'appel FUMIS API', __FILE__));
 	}
 
