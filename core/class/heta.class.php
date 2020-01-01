@@ -80,7 +80,6 @@ class heta extends eqLogic {
             $temperature->setTemplate('dashboard','tile');
             $temperature->setTemplate('mobile','tile');
             $temperature->setIsHistorized(true);
-            $temperature->setIsVisible(true);
             $temperature->setUnite('°C');
 			$temperature->setName(__('Température', __FILE__));
 		}
@@ -113,7 +112,7 @@ class heta extends eqLogic {
 		if (!is_object($data)) {
 			$data = new hetaCmd();
     		$data->setLogicalId('data');
-            $data->setIsVisible(false);
+            $data->setIsVisible(0);
 			$data->setName(__('Data', __FILE__));
 		}
 		$data->setEqLogic_id($this->getId());
@@ -125,7 +124,6 @@ class heta extends eqLogic {
         $etat = $this->getCmd(null, 'etat');
 		if (!is_object($etat)) {
 			$etat = new hetaCmd();
-            $etat->setIsVisible(true);
     		$etat->setLogicalId('etat');
             $etat->setTemplate('dashboard','line');
             $etat->setTemplate('mobile','line');
@@ -141,7 +139,7 @@ class heta extends eqLogic {
 		if (!is_object($etatId)) {
 			$etatId = new hetaCmd();
     		$etatId->setLogicalId('etatId');
-            $etatId->setIsVisible(false);
+            $etatId->setIsVisible(0);
             $etatId->setTemplate('dashboard','line');
             $etatId->setTemplate('mobile','line');
             $etatId->setName(__('Etat ID', __FILE__));
@@ -157,7 +155,6 @@ class heta extends eqLogic {
 			$actif = new hetaCmd();
     		$actif->setLogicalId('actif');
 			$actif->setName(__('Actif', __FILE__));
-			$actif->setIsVisible(1);
 			$actif->setIsHistorized(1);
 		}
 		$actif->setDisplay('generic_type', 'THERMOSTAT_STATE');
@@ -187,7 +184,6 @@ class heta extends eqLogic {
             $thermostat->setTemplate('mobile','thermostat');
             $thermostat->setUnite('°C');
 			$thermostat->setName(__('Thermostat', __FILE__));
-            $thermostat->setIsVisible(1);
     		$thermostat->setConfiguration('maxValue', 40);
     		$thermostat->setConfiguration('minValue', 10);
         }
@@ -203,7 +199,6 @@ class heta extends eqLogic {
 		if (!is_object($off)) {
 			$off = new hetaCmd();
     		$off->setLogicalId('off');
-			$off->setIsVisible(1);
 			$off->setName(__('Off', __FILE__));
 		}
 		$off->setDisplay('generic_type', 'THERMOSTAT_SET_MODE');
@@ -218,7 +213,6 @@ class heta extends eqLogic {
 		if (!is_object($on)) {
 			$on = new hetaCmd();
     		$on->setLogicalId('on');
-			$on->setIsVisible(1);
 			$on->setName(__('On', __FILE__));
 		}
 		$on->setDisplay('generic_type', 'THERMOSTAT_SET_MODE');
