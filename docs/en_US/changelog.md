@@ -16,4 +16,9 @@ Fix 29 octobre 2019
 
 -   Correction paramètres après sauvegarde
 
+Fix 01 janvier 2020
+---
+
+-   Compatibilité PHP7.3
+
 [Documentation](index.md)
