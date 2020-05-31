@@ -227,6 +227,9 @@ class heta extends eqLogic {
         if ($this->getConfiguration('mac') == '') {
             throw new Exception(__('L\'adresse Mac ne peut être vide', __FILE__));    
         }
+        if ($this->getConfiguration('pin') == '') {
+            throw new Exception(__('Le code PIN ne peut être vide', __FILE__));    
+        }
     }
 
     public function postUpdate() {
@@ -278,27 +281,31 @@ class heta extends eqLogic {
             return;
         }
         $mac = $this->getConfiguration("mac");
-        $fumis = new fumis($mac);
+        if ($this->getConfiguration('pin') == '') {
+            return;
+        }
+        $pin = $this->getConfiguration("pin");
+        $fumis = new fumis($mac, $pin);
         $hetaStatus = $fumis->getStatus();
         log::add('heta', 'debug', $this->getHumanName().' Status result: '. json_encode($hetaStatus));
         $this->cmdUpdate($hetaStatus);
     }
     
     public function setHetaConsigne($pOrder) {
-        $fumis = new fumis($this->getConfiguration("mac"));
+        $fumis = new fumis($this->getConfiguration("mac"), $this->getConfiguration("pin"));
         $hetaStatus = $fumis->setOrder($pOrder);        
         $this->cmdUpdate($hetaStatus);
     }
     
     public function setHetaStart() {
-        $fumis = new fumis($this->getConfiguration("mac"));
+        $fumis = new fumis($this->getConfiguration("mac"), $this->getConfiguration("pin"));
         $fumis->start();
         $status = $this->checkAndUpdateCmd('actif', true);
         $this->cmdUpdate($status);
     }
     
     public function setHetaStop() {
-        $fumis = new fumis($this->getConfiguration("mac"));
+        $fumis = new fumis($this->getConfiguration("mac"), $this->getConfiguration("pin"));
         $fumis->stop();
         $status = $this->checkAndUpdateCmd('actif', false);
         $this->cmdUpdate($status);

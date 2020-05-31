@@ -99,6 +99,12 @@ foreach (jeeObject::all() as $object) {
 						<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="mac" placeholder="0016D00018A9"/>
 					</div>
 				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">{{Code PIN}}</label>
+					<div class="col-sm-3">
+						<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="pin" placeholder="1234"/>
+					</div>
+				</div>
 				</fieldset>
 				</form>
 </div>

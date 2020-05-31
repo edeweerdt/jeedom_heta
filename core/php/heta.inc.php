@@ -77,16 +77,18 @@ class fumis {
     /*     * *************************Attributs****************************** */
     const FUMISURL = "http://api.fumis.si/v1/status/";
     const APPNAME  = "heta";
-    const PASSWORD = "0000";
+//    const PASSWORD = "0000";
 
     private $_mac;
+    private $_pin;
 
     /*     * ***********************Methode static*************************** */
 
     
     /*     * ***********************Constructeur***************************** */
-    function fumis($pMac = null) {
+    function fumis($pMac = null, $pPin = null) {
         $this->setMac($pMac);
+        $this->setPin($pPin);
     }
 
     /*     * *********************Méthodes d'instance************************* */
@@ -148,7 +150,7 @@ class fumis {
             unit => array(
                 id => $this->_mac,
                 type => 0,
-                pin => self::PASSWORD),
+                pin => $this->_pin),
             apiVersion => "1",
             controller => $command
         );
@@ -160,7 +162,7 @@ class fumis {
             unit => array(
                 id => $this->_mac,
                 type => 0,
-                pin => self::PASSWORD),
+                pin => $this->_pin),
             apiVersion => "1",
             controller => $pCommand
         );
@@ -176,7 +178,7 @@ class fumis {
                 'method'=>$pMethod,
                 'header'=> array(
                     'Content-type: application/json',
-                    'password: '.self::PASSWORD,
+                    'password: '.$this->_pin,
                     'username: '.$this->_mac,
                     'appname: '.self::APPNAME,
                     'Accept-Language: fr-fr',
@@ -186,7 +188,7 @@ class fumis {
 		if ($pContent !== null){
 			$opts['http']['content'] = json_encode($pContent); 
 		}
-        //log::add('heta', 'debug', "Fumis request = ".json_encode($opts));
+        log::add('heta', 'debug', "Fumis request = ".json_encode($opts));
 		return stream_context_create($opts);
 	}
 
@@ -202,6 +204,9 @@ class fumis {
     /*     * **********************Getteur Setteur*************************** */
     public function setMac($pMac) {
         $this->_mac = $pMac;
+    }
+    public function setPin($pPin) {
+        $this->_pin = $pPin;
     }
 }
 ?>

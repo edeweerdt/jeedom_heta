@@ -21,4 +21,9 @@ Fix 01 janvier 2020
 
 -   Compatibilité PHP7.3
 
+Fix 31 mai 2020
+---
+
+-   Ajout du param code PIN boitier
+
 [Documentation](index.md)
