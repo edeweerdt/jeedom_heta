@@ -3,7 +3,7 @@ Description
 
 Plugin servant au controle d'un poële à pellet Heta.
 
-![ScanLine Green 200](../assets/images/heta-scanline-green-200.jpg) ![Widget](../assets/images/WidgetHeta.png)
+![ScanLine Green 200](../assets/images/heta-scanline-green-200.jpg) ![AUSTOFLAMM Poly 2.0](../assets/images/austroflamm-poly-2.jpg) ![Widget](../assets/images/WidgetHeta.png)
 
 Prérequis
 =========
@@ -22,7 +22,7 @@ Installation
 
 Après installation du plugin, activez celui-ci.
 
-Ajoutez un équipement en prennant soins de rentrer l'adresse MAC
+Ajoutez un équipement en prennant soins de rentrer l'adresse MAC et le code PIN
 récupérée précédement.
 
 Fonctionnement
@@ -35,6 +35,7 @@ Compatibilité
 
 Vérifié:
 -   Heta ScanLine Green 200 [ici](https://heta.dk/en/product/scan-line-green-200/)
+-   AustroFlamm Poly 2.0 [ici](https://www.austroflamm.com/fr/geraet/polly-2-0/) (Merci Yann)
 
 A vérifier
 -   Tout équipement utilisant le boitier [Fumis WiRCU](http://www.fumis.si/en/wircu-connection-guide)
