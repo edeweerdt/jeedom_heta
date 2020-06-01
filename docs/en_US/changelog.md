@@ -1,24 +1,34 @@
 ChangeLog
 ===
 
-Version mars 2019
+Version March 2019
 ---
 
-Création du plugin
+Plugin creation
 
--   Lecture des informations
--   Controle marche/arret
--   Controle de la température
--   Documentation
+- Reading information
+- On / off control
+- Temperature control
+- Documentation
 
-Fix 29 octobre 2019
+Fix October 29, 2019
 ---
 
--   Correction paramètres après sauvegarde
+- Fix parameters after saving
 
-Fix 01 janvier 2020
+Fix January 01, 2020
 ---
 
--   Compatibilité PHP7.3
+- PHP7.3 compatibility
+
+Fix May 31, 2020
+---
+
+- Adding of the PIN code parameter box
+
+Fix June 01, 2020
+---
+
+- Adding of pellet level
 
 [Documentation](index.md)

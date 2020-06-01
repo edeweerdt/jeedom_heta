@@ -1,24 +1,34 @@
-ChangeLog
+Changlog
 ===
 
-Version mars 2019
----
+Version März 2019
+--- ---.
 
-Création du plugin
+Plugin-Erstellung
 
--   Lecture des informations
--   Controle marche/arret
--   Controle de la température
--   Documentation
+- Informationen lesen
+- Ein / Aus-Steuerung
+- Temperaturkontrolle
+- Dokumentation
 
-Fix 29 octobre 2019
----
+Fix 29. Oktober 2019
+--- ---.
 
--   Correction paramètres après sauvegarde
+- Parameter nach dem Speichern korrigieren
 
-Fix 01 janvier 2020
----
+Fix 01. Januar 2020
+--- ---.
 
--   Compatibilité PHP7.3
+- PHP7.3-Kompatibilität
+
+Fix 31. Mai 2020
+--- ---.
+
+- Hinzufügen des PIN-Code-Parameterfelds
+
+Fix 01. Juni 2020
+--- ---.
+
+- Hinzufügen des Pelletniveaus
 
 [Documentation](index.md)

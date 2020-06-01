@@ -1,7 +1,7 @@
 Description 
 ===========
 
-Plugin servant au controle d'un poële à pellet Heta.
+Plugin servant au controle d'un poële à pellet Heta ou AustroFlamm.
 
 ![ScanLine Green 200](../assets/images/heta-scanline-green-200.jpg) ![AUSTROFLAMM Poly 2.0](../assets/images/austroflamm-polly-2.jpg) ![Widget](../assets/images/WidgetHeta.png)
 
@@ -35,7 +35,7 @@ Compatibilité
 
 Vérifié:
 -   Heta ScanLine Green 200 [ici](https://heta.dk/en/product/scan-line-green-200/)
--   AustroFlamm Poly 2.0 [ici](https://www.austroflamm.com/fr/geraet/polly-2-0/) (Merci Yann)
+-   AustroFlamm Poly 2.0 [ici](https://www.austroflamm.com/fr/geraet/polly-2-0/) (Merci à Yann)
 
 A vérifier
 -   Tout équipement utilisant le boitier [Fumis WiRCU](http://www.fumis.si/en/wircu-connection-guide)

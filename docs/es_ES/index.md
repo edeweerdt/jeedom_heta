@@ -1,62 +1,61 @@
-Description 
+Descripción
 ===========
 
-Plugin servant au controle d'un poële à pellet Heta.
+Complemento utilizado para controlar una estufa de pellets Heta o AustroFlamm.
 
 ![ScanLine Green 200](../assets/images/heta-scanline-green-200.jpg) ![Widget](../assets/images/WidgetHeta.png)
 
-Prérequis
+Prerrequisitos
 =========
 
-Le poële à pellet doit être équipé d'un boitier WiRCU:
+La estufa de pellets debe estar equipada con una caja WiRCU:
 
 ![Fumis WiRCU](../assets/images/WiRCU.jpg "WiRCU")
 
-Vous aurez besoin de l'adresse MAC du boitier que vous pouvez retrouver
-inscrite dessus ou dans l'application mobile Heta:
+Necesitará la dirección MAC y el código PIN de la casilla que puede encontrar
+registrado anteriormente o en la aplicación móvil Heta:
 
 ![Mac adresse](../assets/images/HetaAppMac.jpg "App mobile Heta")
 
-Installation
-============
-
-Après installation du plugin, activez celui-ci.
-
-Ajoutez un équipement en prennant soins de rentrer l'adresse MAC
-récupérée précédement.
-
-Fonctionnement
-==============
-
-Le plugin récupère les informations du poële toutes les minutes.
-
-Compatibilité
+Instalación
 =============
 
-Vérifié:
--   Heta ScanLine Green 200 [ici](https://heta.dk/en/product/scan-line-green-200/)
+Después de instalar el complemento, actívelo.
 
-A vérifier
--   Tout équipement utilisant le boitier [Fumis WiRCU](http://www.fumis.si/en/wircu-connection-guide)
+Agregue equipo con cuidado para ingresar la dirección MAC y el código PIN
+previamente recuperado
 
-RoadMap
+Operación
+===============
+
+El complemento recopila información de la estufa cada minuto.
+
+Compatibilidad
+==============
+
+Comprobado:
+- Heta ScanLine Green 200 [aquí](https://heta.dk/en/product/scan-line-green-200/)
+- AustroFlamm Poly 2.0 [aquí](https://www.austroflamm.com/fr/geraet/polly-2-0/) (Gracias a Yann)
+
+Verificar
+- Todos los equipos que usan la caja [Fumis WiRCU](http://www.fumis.si/en/wircu-connection-guide)
+
+Mapa vial
 =======
 
-Evolutions prévues
+Desarrollos planeados
 ------------------
-- ajout des informations statistiques
-- controle de la puissance de fonctionnement
-- controle de la vitesse de ventilation
+- información estadística agregada
+- control de la potencia operativa
+- control de velocidad de ventilación
 
 
-Evolutions evisagée
+Desarrollos planeados
 ------------------
-- affichage de la prochaine commande programmée
-- commande de démarrage différée
-- commande d'arret différée
+- visualización del siguiente comando programado
+- comando de inicio retrasado
+- comando de parada retardada
 
-
-Changelog
+Registro de cambios
 =========
-[Voir la page dédiée](changelog.md)
-
+[ver la página dedicada](changelog.md)

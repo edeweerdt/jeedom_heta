@@ -1,62 +1,62 @@
-Description 
-===========
-
-Plugin servant au controle d'un poële à pellet Heta.
-
-![ScanLine Green 200](../assets/images/heta-scanline-green-200.jpg) ![Widget](../assets/images/WidgetHeta.png)
-
-Prérequis
-=========
-
-Le poële à pellet doit être équipé d'un boitier WiRCU:
-
-![Fumis WiRCU](../assets/images/WiRCU.jpg "WiRCU")
-
-Vous aurez besoin de l'adresse MAC du boitier que vous pouvez retrouver
-inscrite dessus ou dans l'application mobile Heta:
-
-![Mac adresse](../assets/images/HetaAppMac.jpg "App mobile Heta")
-
-Installation
+Beschreibung
 ============
 
-Après installation du plugin, activez celui-ci.
+Plugin zur Steuerung eines Heta oder AustroFlamm Pelletofens.
 
-Ajoutez un équipement en prennant soins de rentrer l'adresse MAC
-récupérée précédement.
+![ScanLine Green 200](../Assets/Images/Heta-Scanline-Green-200.jpg) ![AUSTROFLAMM Poly 2.0](../Assets/Images/Austroflamm-Polly-2.jpg) ![Widget](../assets/images/WidgetHeta.png)
 
-Fonctionnement
-==============
+Voraussetzungen
+=========
 
-Le plugin récupère les informations du poële toutes les minutes.
+Der Pelletofen muss mit einer WiRCU-Box ausgestattet sein:
 
-Compatibilité
+![Fumis WiRCU](../Assets/Images/WiRCU.jpg "WiRCU")
+
+Sie benötigen die MAC-Adresse und den PIN-Code der Box, die Sie finden können
+oben oder in der mobilen Heta-Anwendung registriert:
+
+![Mac-Adresse](../Assets/Images/HetaAppMac.jpg "Heta Mobile App")
+
+Installation
 =============
 
-Vérifié:
--   Heta ScanLine Green 200 [ici](https://heta.dk/en/product/scan-line-green-200/)
+Aktivieren Sie das Plugin nach der Installation.
 
-A vérifier
--   Tout équipement utilisant le boitier [Fumis WiRCU](http://www.fumis.si/en/wircu-connection-guide)
+Fügen Sie Geräte hinzu, die darauf achten, die MAC-Adresse und den PIN-Code einzugeben
+zuvor erholt.
+
+Betrieb
+===============
+
+Das Plugin sammelt jede Minute Informationen vom Herd.
+
+Kompatibilität
+==============
+
+Überprüft:
+- Heta ScanLine Green 200 [hier](https://heta.dk/en/product/scan-line-green-200/)
+- AustroFlamm Poly 2.0 [hier](https://www.austroflamm.com/fr/geraet/polly-2-0/) (Danke an Yann)
+
+Überprüfen
+- Alle Geräte, die Box verwenden [Fumis WiRCU](http://www.fumis.si/en/wircu-connection-guide)
 
 RoadMap
-=======
+========
 
-Evolutions prévues
-------------------
-- ajout des informations statistiques
-- controle de la puissance de fonctionnement
-- controle de la vitesse de ventilation
-
-
-Evolutions evisagée
-------------------
-- affichage de la prochaine commande programmée
-- commande de démarrage différée
-- commande d'arret différée
+Geplante Entwicklungen
+------------------ ------------------.
+- statistische Informationen hinzugefügt
+- Kontrolle der Betriebsleistung
+- Steuerung der Belüftungsgeschwindigkeit
 
 
-Changelog
+Geplante Entwicklungen
+------------------ ------------------.
+- Anzeige des nächsten programmierten Befehls
+- verzögerter Startbefehl
+- verzögerter Stoppbefehl
+
+
+Änderungsprotokoll
 =========
-[Voir la page dédiée](changelog.md)
-
+[Siehe die entsprechende Seite] (changelog.md)
