@@ -3,7 +3,7 @@ Description
 
 Plugin servant au controle d'un poële à pellet Heta.
 
-![ScanLine Green 200](../assets/images/heta-scanline-green-200.jpg) ![AUSTOFLAMM Poly 2.0](../assets/images/austroflamm-poly-2.jpg) ![Widget](../assets/images/WidgetHeta.png)
+![ScanLine Green 200](../assets/images/heta-scanline-green-200.jpg) ![AUSTROFLAMM Poly 2.0](../assets/images/austroflamm-polly-2.jpg) ![Widget](../assets/images/WidgetHeta.png)
 
 Prérequis
 =========
