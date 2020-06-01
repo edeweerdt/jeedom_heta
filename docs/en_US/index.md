@@ -59,4 +59,4 @@ Planned developments
 
 Changelog
 =========
-[See the dedicated page] (changelog.md)
+[See the dedicated page](changelog.md)
