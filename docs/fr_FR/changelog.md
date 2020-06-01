@@ -26,4 +26,9 @@ Fix 31 mai 2020
 
 -   Ajout du param code PIN boitier
 
+Fix 01 juin 2020
+---
+
+-   Ajout du niveau de pellet
+
 [Documentation](index.md)

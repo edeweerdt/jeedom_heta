@@ -163,6 +163,23 @@ class heta extends eqLogic {
 		$actif->setSubType('binary');
 		$actif->save();
         
+        // INFO Niveau Pellet
+        $pellet = $this->getCmd(null, 'pellet');
+		if (!is_object($pellet)) {
+			$pellet = new hetaCmd();
+    		$pellet->setLogicalId('pellet');
+//            $pellet->setTemplate('dashboard','tile');
+//            $pellet->setTemplate('mobile','tile');
+            $pellet->setIsHistorized(true);
+            $pellet->setUnite('%');
+			$pellet->setName(__('Pellet', __FILE__));
+		}
+		$pellet->setEqLogic_id($this->getId());
+//		$pellet->setDisplay('generic_type', 'THERMOSTAT_TEMPERATURE');
+		$pellet->setType('info');
+		$pellet->setSubType('numeric');
+		$pellet->save();	
+        
         // COMMANDE rafraichissement des données
 		$refresh = $this->getCmd(null, 'refresh');
 		if (!is_object($refresh)) {
@@ -264,6 +281,7 @@ class heta extends eqLogic {
     public function cmdUpdate($pHetaValue) {
     	$this->checkAndUpdateCmd('data', $pHetaValue->data);
         $this->checkAndUpdateCmd('temperature', $pHetaValue->temperature);
+        $this->checkAndUpdateCmd('pellet', $pHetaValue->pellet);
         $this->checkAndUpdateCmd('consigne', $pHetaValue->consigne);
         $this->checkAndUpdateCmd('thermostat', $pHetaValue->consigne);
 		$this->checkAndUpdateCmd('etatId', $pHetaValue->etatId);

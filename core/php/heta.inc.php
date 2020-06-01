@@ -56,6 +56,7 @@ class hetaResult {
         $this->etatId = $pData->controller->status;
         $this->temperature = $pData->controller->temperatures[0]->actual;
         $this->consigne = $pData->controller->temperatures[0]->set;
+        $this->pellet = $pData->controller->fuels[0]->quantity * 100;
         
         $this->statistic = array(
             tMaintenance =>    $pData->controller->timeToService,
