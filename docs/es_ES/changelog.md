@@ -30,4 +30,10 @@ Fix 01 de junio de 2020
 ---
 
 - Adición de nivel de pellet
+
+Fix 08 de junio de 2020
+---
+
+- Corrección del error de variación de temperatura mostrado
+
 [Documentation](index.md)

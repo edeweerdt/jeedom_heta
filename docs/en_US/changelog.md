@@ -31,4 +31,9 @@ Fix June 01, 2020
 
 - Adding of pellet level
 
+Fix June 08, 2020
+---
+
+- Correction of temperature variation bug displayed
+
 [Documentation](index.md)

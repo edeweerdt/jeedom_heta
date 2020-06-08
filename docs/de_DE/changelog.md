@@ -31,4 +31,9 @@ Fix 01. Juni 2020
 
 - Hinzufügen des Pelletniveaus
 
+Fix 08. Juni 2020
+--- ---.
+
+- Korrektur des Temperaturänderungsfehlers angezeigt
+
 [Documentation](index.md)
