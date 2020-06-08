@@ -32,6 +32,8 @@ class hetaResult {
                        '40' => 'En attente mode ECO',
                        '50' => 'Refroidissement');
 
+    public $message;
+    
     public $etat;
     
     public $data;
@@ -41,22 +43,32 @@ class hetaResult {
     
     // valeur de la consigne thermostat
     public $consigne;
+
+    // niveau du réservoir à pellet
+    public $pellet;
         
     // statistiques de fonctionnement
     public $statistic;
     
+    public $_fan0;
     public $_power;
-    public $_temperature0;
+    public $_temperature;
                     
     function hetaResult($pData) {
         //$this->data = $pData;
-        //$this->message = $pData->message;
-        //$this->code = $pData->code;
+        $this->message = $pData->message;
+        $this->code = $pData->code;
+        
+        $this->_temperature = $this->getElement($pData->controller->temperatures, 1);
+        $this->_fan = $this->getElement($pData->controller->fans, 1);
+        $this->_power = $pData->controller->power;
+        $this->_fuel = $this->getElement($pData->controller->fuels, 1);
+        
         $this->etat = self::ETAT[$pData->controller->status];
         $this->etatId = $pData->controller->status;
-        $this->temperature = $pData->controller->temperatures[0]->actual;
-        $this->consigne = $pData->controller->temperatures[0]->set;
-        $this->pellet = $pData->controller->fuels[0]->quantity * 100;
+        $this->temperature = $this->_temperature->actual;
+        $this->consigne = $this->_temperature->set;
+        $this->pellet = $this->_fuel->quantity * 100;
         
         $this->statistic = array(
             tMaintenance =>    $pData->controller->timeToService,
@@ -67,10 +79,14 @@ class hetaResult {
             nbSurchauffe =>    $pData->controller->statistic->overheatings,
             nbErrAllumage =>   $pData->controller->statistic->misfires
         );
-        
-        $this->_fan0 = $pData->controller->fans[0];
-        $this->_power = $pData->controller->power;
-        $this->_temperature0 = $pData->controller->temperatures[0];
+    }
+    
+    protected function getElement($elts, $id) {
+        foreach ($elts as $elt) {
+            if ($elt->id == $id) {
+                return $elt;
+            }
+        }
     }
 }
 
@@ -78,7 +94,7 @@ class fumis {
     /*     * *************************Attributs****************************** */
     const FUMISURL = "http://api.fumis.si/v1/status/";
     const APPNAME  = "heta";
-//    const PASSWORD = "0000";
+    const APIVERSION = "1";
 
     private $_mac;
     private $_pin;
@@ -152,7 +168,7 @@ class fumis {
                 id => $this->_mac,
                 type => 0,
                 pin => $this->_pin),
-            apiVersion => "1",
+            apiVersion => self::APIVERSION,
             controller => $command
         );
         return $request;
@@ -164,7 +180,7 @@ class fumis {
                 id => $this->_mac,
                 type => 0,
                 pin => $this->_pin),
-            apiVersion => "1",
+            apiVersion => self::APIVERSION,
             controller => $pCommand
         );
         $context = $this->_createContext('POST', $content);

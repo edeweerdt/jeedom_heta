@@ -38,7 +38,7 @@ class heta extends eqLogic {
 			if ($eqLogic->getIsEnable() == 1) {
                 log::add('heta', 'debug', $eqLogic->getHumanName(). ' cron refresh');
                 $eqLogic->getHetaStatus();
-/*				$cmd = $eqLogic->getCmd(null, 'refresh');//retourne la commande "refresh" si elle exxiste
+/*				$cmd = $eqLogic->getCmd(null, 'refresh');//retourne la commande "refresh" si elle existe
 				if (!is_object($cmd)) {
 				  continue;
 				}
@@ -134,6 +134,23 @@ class heta extends eqLogic {
 		$etat->setSubType('string');
 		$etat->save();
 
+        // INFO message d'erreur
+        /*
+        $message = $this->getCmd(null, 'message');
+		if (!is_object($message)) {
+			$message = new hetaCmd();
+    		$message->setLogicalId('message');
+            $message->setIsVisible(0);
+            $message->setTemplate('dashboard','line');
+            $message->setTemplate('mobile','line');
+			$message->setName(__('Message', __FILE__));
+		}
+		$message->setEqLogic_id($this->getId());
+		$message->setType('info');
+		$message->setSubType('string');
+		$message->save();
+        */
+        
         //INFO numéro de l'état
         $etatId = $this->getCmd(null, 'etatId');
 		if (!is_object($etatId)) {
@@ -168,14 +185,11 @@ class heta extends eqLogic {
 		if (!is_object($pellet)) {
 			$pellet = new hetaCmd();
     		$pellet->setLogicalId('pellet');
-//            $pellet->setTemplate('dashboard','tile');
-//            $pellet->setTemplate('mobile','tile');
             $pellet->setIsHistorized(true);
             $pellet->setUnite('%');
 			$pellet->setName(__('Pellet', __FILE__));
 		}
 		$pellet->setEqLogic_id($this->getId());
-//		$pellet->setDisplay('generic_type', 'THERMOSTAT_TEMPERATURE');
 		$pellet->setType('info');
 		$pellet->setSubType('numeric');
 		$pellet->save();	
@@ -286,6 +300,7 @@ class heta extends eqLogic {
         $this->checkAndUpdateCmd('thermostat', $pHetaValue->consigne);
 		$this->checkAndUpdateCmd('etatId', $pHetaValue->etatId);
         $this->checkAndUpdateCmd('etat', $pHetaValue->etat);
+        //$this->checkAndUpdateCmd('message', $pHetaValue->message);
         if ($pHetaValue->etatId == 0) {
             $actif = 0;
         } else {
