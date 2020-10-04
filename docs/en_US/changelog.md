@@ -21,12 +21,12 @@ Fix January 01, 2020
 
 - PHP7.3 compatibility
 
-Fix May 31, 2020
+Add May 31, 2020
 ---
 
 - Adding of the PIN code parameter box
 
-Fix June 01, 2020
+Add June 01, 2020
 ---
 
 - Adding of pellet level
@@ -35,5 +35,10 @@ Fix June 08, 2020
 ---
 
 - Correction of temperature variation bug displayed
+
+Add 15 octobre 2020
+---
+
+-   Adding gas temperature
 
 [Documentation](index.md)

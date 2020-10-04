@@ -2,7 +2,7 @@ Changlog
 ===
 
 Version März 2019
---- ---.
+---
 
 Plugin-Erstellung
 
@@ -12,28 +12,33 @@ Plugin-Erstellung
 - Dokumentation
 
 Fix 29. Oktober 2019
---- ---.
+---
 
 - Parameter nach dem Speichern korrigieren
 
 Fix 01. Januar 2020
---- ---.
+---
 
 - PHP7.3-Kompatibilität
 
-Fix 31. Mai 2020
---- ---.
+Add 31. Mai 2020
+---
 
 - Hinzufügen des PIN-Code-Parameterfelds
 
-Fix 01. Juni 2020
---- ---.
+Add 01. Juni 2020
+---
 
 - Hinzufügen des Pelletniveaus
 
 Fix 08. Juni 2020
---- ---.
+---
 
 - Korrektur des Temperaturänderungsfehlers angezeigt
+
+Add 15. Oktober 2020
+---
+
+-   Gastemperatur hinzufügen
 
 [Documentation](index.md)
