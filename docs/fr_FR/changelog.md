@@ -21,12 +21,12 @@ Fix 01 janvier 2020
 
 -   Compatibilité PHP7.3
 
-Fix 31 mai 2020
+Add 31 mai 2020
 ---
 
 -   Ajout du param code PIN boitier
 
-Fix 01 juin 2020
+Add 01 juin 2020
 ---
 
 -   Ajout du niveau de pellet
@@ -35,5 +35,10 @@ Fix 08 juin 2020
 ---
 
 -   Correction bug de variation de température affichée
+
+Add 15 octobre 2020
+---
+
+-   Ajout de la température des gaz
 
 [Documentation](index.md)
