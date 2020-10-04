@@ -46,13 +46,24 @@ class hetaResult {
 
     // niveau du réservoir à pellet
     public $pellet;
+
+    // valeur de puissance
+    public $puissance;
+
+    // valeur de ventilation
+    public $ventilation;
         
     // statistiques de fonctionnement
     public $statistic;
     
-    public $_fan0;
+    // température des gaz
+    public $gazTemperature;
+
+    public $_fuel;
+    public $_fan;
     public $_power;
     public $_temperature;
+    public $_variables;
                     
     function hetaResult($pData) {
         //$this->data = $pData;
@@ -63,12 +74,16 @@ class hetaResult {
         $this->_fan = $this->getElement($pData->controller->fans, 1);
         $this->_power = $pData->controller->power;
         $this->_fuel = $this->getElement($pData->controller->fuels, 1);
+        $this->_variables = $pData->controller->diagnostic->variables;
         
         $this->etat = self::ETAT[$pData->controller->status];
         $this->etatId = $pData->controller->status;
         $this->temperature = $this->_temperature->actual;
         $this->consigne = $this->_temperature->set;
         $this->pellet = $this->_fuel->quantity * 100;
+        $this->puissance = $this->_power->actualPower;
+        $this->ventilation = $this->_fan->speed;
+        $this->gazTemperature = $this->getElement($this->_variables, 11)->value;
         
         $this->statistic = array(
             tMaintenance =>    $pData->controller->timeToService,

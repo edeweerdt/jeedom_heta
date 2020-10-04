@@ -194,6 +194,21 @@ class heta extends eqLogic {
 		$pellet->setSubType('numeric');
 		$pellet->save();	
         
+        // INFO Température Gaz
+        $gazTemp = $this->getCmd(null, 'gaz');
+		if (!is_object($gazTemp)) {
+			$gazTemp = new hetaCmd();
+    		$gazTemp->setLogicalId('gaz');
+            $gazTemp->setIsHistorized(true);
+            $gazTemp->setUnite('°C');
+			$gazTemp->setName(__('Température de gaz', __FILE__));
+		}
+		$gazTemp->setEqLogic_id($this->getId());
+		$gazTemp->setType('info');
+		$gazTemp->setSubType('numeric');
+		$gazTemp->save();	
+        
+
         // COMMANDE rafraichissement des données
 		$refresh = $this->getCmd(null, 'refresh');
 		if (!is_object($refresh)) {
@@ -296,6 +311,7 @@ class heta extends eqLogic {
     	$this->checkAndUpdateCmd('data', $pHetaValue->data);
         $this->checkAndUpdateCmd('temperature', $pHetaValue->temperature);
         $this->checkAndUpdateCmd('pellet', $pHetaValue->pellet);
+        $this->checkAndUpdateCmd('gaz', $pHetaValue->gazTemperature);
         $this->checkAndUpdateCmd('consigne', $pHetaValue->consigne);
         $this->checkAndUpdateCmd('thermostat', $pHetaValue->consigne);
 		$this->checkAndUpdateCmd('etatId', $pHetaValue->etatId);
