@@ -208,7 +208,30 @@ class heta extends eqLogic {
 		$gazTemp->setSubType('numeric');
 		$gazTemp->save();	
         
+        // INFO Puissance
+        $puissance = $this->getCmd(null, 'puissance');
+		if (!is_object($puissance)) {
+			$puissance = new hetaCmd();
+    		$puissance->setLogicalId('puissance');
+            $puissance->setName(__('Puissance', __FILE__));
+		}
+		$puissance->setEqLogic_id($this->getId());
+		$puissance->setType('info');
+		$puissance->setSubType('numeric');
+		$puissance->save();	
 
+        // INFO Ventilation
+        $ventilation = $this->getCmd(null, 'ventilation');
+		if (!is_object($ventilation)) {
+			$ventilation = new hetaCmd();
+    		$ventilation->setLogicalId('ventilation');
+            $ventilation->setName(__('Ventilation', __FILE__));
+		}
+		$ventilation->setEqLogic_id($this->getId());
+		$ventilation->setType('info');
+		$ventilation->setSubType('numeric');
+		$ventilation->save();	
+        
         // COMMANDE rafraichissement des données
 		$refresh = $this->getCmd(null, 'refresh');
 		if (!is_object($refresh)) {
@@ -312,6 +335,8 @@ class heta extends eqLogic {
         $this->checkAndUpdateCmd('temperature', $pHetaValue->temperature);
         $this->checkAndUpdateCmd('pellet', $pHetaValue->pellet);
         $this->checkAndUpdateCmd('gaz', $pHetaValue->gazTemperature);
+        $this->checkAndUpdateCmd('puissance', $pHetaValue->puissance);
+        $this->checkAndUpdateCmd('ventilation', $pHetaValue->ventilation); 
         $this->checkAndUpdateCmd('consigne', $pHetaValue->consigne);
         $this->checkAndUpdateCmd('thermostat', $pHetaValue->consigne);
 		$this->checkAndUpdateCmd('etatId', $pHetaValue->etatId);
