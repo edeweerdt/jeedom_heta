@@ -42,5 +42,6 @@ Add 15 octobre 2020
 -   Ajout de la température des gaz
 -   Ajout de la valeur de puissance
 -   Ajout de la valeur de ventilation
+-   Ajout statistic
 
 [Documentation](index.md)

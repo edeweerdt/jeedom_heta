@@ -194,19 +194,19 @@ class heta extends eqLogic {
 		$pellet->setSubType('numeric');
 		$pellet->save();	
         
-        // INFO Température Gaz
-        $gazTemp = $this->getCmd(null, 'gaz');
-		if (!is_object($gazTemp)) {
-			$gazTemp = new hetaCmd();
-    		$gazTemp->setLogicalId('gaz');
-            $gazTemp->setIsHistorized(true);
-            $gazTemp->setUnite('°C');
-			$gazTemp->setName(__('Température de gaz', __FILE__));
+        // INFO Température foyer
+        $foyer = $this->getCmd(null, 'foyer');
+		if (!is_object($foyer)) {
+			$foyer = new hetaCmd();
+    		$foyer->setLogicalId('foyer');
+            $foyer->setIsHistorized(true);
+            $foyer->setUnite('°C');
+			$foyer->setName(__('Température du foyer', __FILE__));
 		}
-		$gazTemp->setEqLogic_id($this->getId());
-		$gazTemp->setType('info');
-		$gazTemp->setSubType('numeric');
-		$gazTemp->save();	
+		$foyer->setEqLogic_id($this->getId());
+		$foyer->setType('info');
+		$foyer->setSubType('numeric');
+		$foyer->save();	
         
         // INFO Puissance
         $puissance = $this->getCmd(null, 'puissance');
@@ -231,6 +231,22 @@ class heta extends eqLogic {
 		$ventilation->setType('info');
 		$ventilation->setSubType('numeric');
 		$ventilation->save();	
+        
+        // INFO Maintenance
+        $timeToService = $this->getCmd(null, 'timeToService');
+		if (!is_object($timeToService)) {
+            $timeToService = new hetaCmd();
+            $timeToService->setIsVisible(0);
+    		$timeToService->setLogicalId('timeToService');
+            $timeToService->setTemplate('dashboard','line');
+            $timeToService->setTemplate('mobile','line');
+            $timeToService->setUnite('h');
+            $timeToService->setName(__('Temps avant service', __FILE__));
+		}
+		$timeToService->setEqLogic_id($this->getId());
+		$timeToService->setType('info');
+		$timeToService->setSubType('other');
+		$timeToService->save();	
         
         // COMMANDE rafraichissement des données
 		$refresh = $this->getCmd(null, 'refresh');
@@ -334,14 +350,16 @@ class heta extends eqLogic {
     	$this->checkAndUpdateCmd('data', $pHetaValue->data);
         $this->checkAndUpdateCmd('temperature', $pHetaValue->temperature);
         $this->checkAndUpdateCmd('pellet', $pHetaValue->pellet);
-        $this->checkAndUpdateCmd('gaz', $pHetaValue->gazTemperature);
+        $this->checkAndUpdateCmd('foyer', $pHetaValue->temperatureInterne);
         $this->checkAndUpdateCmd('puissance', $pHetaValue->puissance);
         $this->checkAndUpdateCmd('ventilation', $pHetaValue->ventilation); 
         $this->checkAndUpdateCmd('consigne', $pHetaValue->consigne);
         $this->checkAndUpdateCmd('thermostat', $pHetaValue->consigne);
 		$this->checkAndUpdateCmd('etatId', $pHetaValue->etatId);
         $this->checkAndUpdateCmd('etat', $pHetaValue->etat);
+        $this->checkAndUpdateCmd('timeToService', $pHetaValue->statistic['tMaintenance']);
         //$this->checkAndUpdateCmd('message', $pHetaValue->message);
+
         if ($pHetaValue->etatId == 0) {
             $actif = 0;
         } else {

@@ -55,7 +55,7 @@ class hetaResult {
     public $statistic;
     
     // température des gaz
-    public $gazTemperature;
+    public $temperatureInterne;
 
     function hetaResult($pData) {
         $this->data = $pData;
@@ -70,32 +70,30 @@ class hetaResult {
         $this->pellet = $this->getFuel(1)->quantity * 100;
         $this->puissance = $pData->controller->power->actualPower;
         $this->ventilation = $this->getFan(1)->speed;
-        $this->gazTemperature = $this->getGazTemp();
+        $this->temperatureInterne = $this->getFoyer();
         $this->statistic = $this->getStatistic();
-        
         $this->data = null;
     }
     
-    protected function getGazTemp() {
-        switch ($this->data->apiVersion) {
-            case '1.0':
-                return $this->getVariableValue(11);
-            case '1.3':
-                return $this->getTemperature(7)->actual;
-            default:
-                return 0;
+    protected function getFoyer() {
+        $sonde7 = $this->getTemperature(7);
+        if ($sonde7 != NULL) {
+            return $sonde7->actual;
         }
+        return $this->getVariableValue(11);
     }
+
     protected function getStatistic() {
-        return array(
-            tMaintenance =>    $pData->controller->timeToService,
-            nbAllumages =>     $pData->controller->statistic->igniterStarts,
-            tFonctionnement => round($pData->controller->statistic->uptime / 3600),
-            tChauffage =>      round($pData->controller->statistic->heatingTime / 3600),
-            tService =>        round($pData->controller->statistic->serviceTime / 3600),
-            nbSurchauffe =>    $pData->controller->statistic->overheatings,
-            nbErrAllumage =>   $pData->controller->statistic->misfires
+        $result = array(
+            tMaintenance =>    $this->data->controller->timeToService + 0,
+            nbAllumages =>     $this->data->controller->statistic->igniterStarts,
+            tFonctionnement => round($this->data->controller->statistic->uptime / 3600),
+            tChauffage =>      round($this->data->controller->statistic->heatingTime / 3600),
+            tService =>        round($this->data->controller->statistic->serviceTime / 3600),
+            nbSurchauffe =>    $this->data->controller->statistic->overheatings,
+            nbErrAllumage =>   $this->data->controller->statistic->misfires
         );
+        return $result;
     }
 
     protected function getTemperature($id) {
@@ -120,6 +118,7 @@ class hetaResult {
                 return $elt;
             }
         }
+        return NULL;
     }
 }
 
