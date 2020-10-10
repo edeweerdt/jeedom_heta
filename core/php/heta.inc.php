@@ -85,13 +85,13 @@ class hetaResult {
 
     protected function getStatistic() {
         $result = array(
-            tMaintenance =>    $this->data->controller->timeToService + 0,
-            nbAllumages =>     $this->data->controller->statistic->igniterStarts,
-            tFonctionnement => round($this->data->controller->statistic->uptime / 3600),
-            tChauffage =>      round($this->data->controller->statistic->heatingTime / 3600),
-            tService =>        round($this->data->controller->statistic->serviceTime / 3600),
-            nbSurchauffe =>    $this->data->controller->statistic->overheatings,
-            nbErrAllumage =>   $this->data->controller->statistic->misfires
+            tMaintenance =>  $this->data->controller->timeToService + 0,
+            nbAllumages =>   $this->data->controller->statistic->igniterStarts,
+            tSecteur =>      round($this->data->controller->statistic->uptime / 3600),
+            tChauffage =>    round($this->data->controller->statistic->heatingTime / 3600),
+            tService =>      round($this->data->controller->statistic->serviceTime / 3600),
+            nbSurchauffe =>  $this->data->controller->statistic->overheatings,
+            nbErrAllumage => $this->data->controller->statistic->misfires
         );
         return $result;
     }

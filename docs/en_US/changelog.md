@@ -39,6 +39,9 @@ Fix June 08, 2020
 Add 15 octobre 2020
 ---
 
--   Adding gas temperature
+- Adding gas temperature
+- Adding power value
+- Adding ventilation value
+- Adding statistic
 
 [Documentation](index.md)
