@@ -43,5 +43,6 @@ Add 15 octobre 2020
 - Adding power value
 - Adding ventilation value
 - Adding statistic
+Saving object is needed
 
 [Documentation](index.md)

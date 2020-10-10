@@ -43,5 +43,6 @@ Add 15 octobre 2020
 -   Ajout de la valeur de puissance
 -   Ajout de la valeur de ventilation
 -   Ajout statistic
+Nécessite de réenregistrer l'objet
 
 [Documentation](index.md)
