@@ -449,6 +449,7 @@ class heta extends eqLogic {
         $hetaStatus = $fumis->getStatus();
         log::add('heta', 'debug', $this->getHumanName().' Status result: '. json_encode($hetaStatus));
         $this->cmdUpdate($hetaStatus);
+        $this->refreshWidget();
     }
     
     public function setHetaConsigne($pOrder) {
@@ -496,7 +497,7 @@ class hetaCmd extends cmd {
 			case 'refresh':
                 log::add('heta', 'info', $this->getHumanName(). ' action Refresh');
                 $eqLogic->getHetaStatus();
-                $eqLogic->refreshWidget();
+                //$eqLogic->refreshWidget();
                 break;
             case 'thermostat':
                 if (!isset($_options['slider']) || $_options['slider'] == '' || !is_numeric(intval($_options['slider']))) {
