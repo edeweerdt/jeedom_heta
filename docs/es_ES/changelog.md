@@ -39,6 +39,10 @@ Fix 08 de junio de 2020
 Add 15 de octubre de 2020
 ---
 
--   Agregar temperatura del gas
+- Agregar temperatura del gas
+- Valor energético añadido
+- Valor de ventilación añadido
+- Adición estadística
+Requiere volver a registrar el objeto
 
 [Documentation](index.md)

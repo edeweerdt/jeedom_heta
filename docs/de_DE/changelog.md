@@ -39,6 +39,10 @@ Fix 08. Juni 2020
 Add 15. Oktober 2020
 ---
 
--   Gastemperatur hinzufügen
+- Gastemperatur hinzufügen
+- Leistungswert hinzugefügt
+- Belüftungswert hinzugefügt
+- Statistische Ergänzung
+Erfordert eine erneute Registrierung des Objekts
 
 [Documentation](index.md)
