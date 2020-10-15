@@ -32,10 +32,8 @@ class hetaResult {
                        '40' => 'En attente mode ECO',
                        '50' => 'Refroidissement');
 
-    public $message;
-    
+    public $message;   
     public $etat;
-    
     public $data;
     
     // température constatée
@@ -57,51 +55,70 @@ class hetaResult {
     public $statistic;
     
     // température des gaz
-    public $gazTemperature;
+    public $temperatureInterne;
 
-    public $_fuel;
-    public $_fan;
-    public $_power;
-    public $_temperature;
-    public $_variables;
-                    
     function hetaResult($pData) {
-        //$this->data = $pData;
+        $this->data = $pData;
         $this->message = $pData->message;
         $this->code = $pData->code;
         
-        $this->_temperature = $this->getElement($pData->controller->temperatures, 1);
-        $this->_fan = $this->getElement($pData->controller->fans, 1);
-        $this->_power = $pData->controller->power;
-        $this->_fuel = $this->getElement($pData->controller->fuels, 1);
-        $this->_variables = $pData->controller->diagnostic->variables;
-        
         $this->etat = self::ETAT[$pData->controller->status];
         $this->etatId = $pData->controller->status;
-        $this->temperature = $this->_temperature->actual;
-        $this->consigne = $this->_temperature->set;
-        $this->pellet = $this->_fuel->quantity * 100;
-        $this->puissance = $this->_power->actualPower;
-        $this->ventilation = $this->_fan->speed;
-        $this->gazTemperature = $this->getElement($this->_variables, 11)->value;
-        
-        $this->statistic = array(
-            tMaintenance =>    $pData->controller->timeToService,
-            nbAllumages =>     $pData->controller->statistic->igniterStarts,
-            tFonctionnement => round($pData->controller->statistic->uptime / 3600),
-            tChauffage =>      round($pData->controller->statistic->heatingTime / 3600),
-            tService =>        round($pData->controller->statistic->serviceTime / 3600),
-            nbSurchauffe =>    $pData->controller->statistic->overheatings,
-            nbErrAllumage =>   $pData->controller->statistic->misfires
-        );
+        $_temp = $this->getTemperature(1);
+        $this->temperature = $_temp->actual;
+        $this->consigne = $_temp->set;
+        $this->pellet = $this->getFuel(1)->quantity * 100;
+        $this->puissance = $pData->controller->power->actualPower;
+        $this->ventilation = $this->getFan(1)->speed;
+        $this->temperatureInterne = $this->getFoyer();
+        $this->statistic = $this->getStatistic();
+        $this->data = null;
     }
     
+    protected function getFoyer() {
+        $sonde7 = $this->getTemperature(7);
+        if ($sonde7 != NULL) {
+            return $sonde7->actual;
+        }
+        return $this->getVariableValue(11);
+    }
+
+    protected function getStatistic() {
+        $result = array(
+            tMaintenance =>  $this->data->controller->timeToService + 0,
+            nbAllumages =>   $this->data->controller->statistic->igniterStarts,
+            tSecteur =>      round($this->data->controller->statistic->uptime / 3600),
+            tChauffage =>    round($this->data->controller->statistic->heatingTime / 3600),
+            tService =>      round($this->data->controller->statistic->serviceTime / 3600),
+            nbSurchauffe =>  $this->data->controller->statistic->overheatings,
+            nbErrAllumage => $this->data->controller->statistic->misfires
+        );
+        return $result;
+    }
+
+    protected function getTemperature($id) {
+        return $this->getElement($this->data->controller->temperatures, $id);
+    }
+
+    protected function getFuel($id) {
+        return $this->getElement($this->data->controller->fuels, $id);
+    }
+
+    protected function getFan($id) {
+        return $this->getElement($this->data->controller->fans, $id);
+    }
+
+    protected function getVariableValue($id) {
+        return $this->getElement($this->data->controller->diagnostic->variables, $id)->value;
+    }
+
     protected function getElement($elts, $id) {
         foreach ($elts as $elt) {
             if ($elt->id == $id) {
                 return $elt;
             }
         }
+        return NULL;
     }
 }
 
