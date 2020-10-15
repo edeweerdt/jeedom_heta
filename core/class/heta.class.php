@@ -18,7 +18,7 @@
 
 /* * ***************************Includes********************************* */
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
-require_once __DIR__  . '/../../core/php/heta.inc.php';
+require_once __DIR__  . '/../php/heta.inc.php';
 
 class heta extends eqLogic {
     /*     * *************************Attributs****************************** */
@@ -194,6 +194,12 @@ class heta extends eqLogic {
 		$pellet->setSubType('numeric');
 		$pellet->save();	
         
+        // INFO Température Gaz
+        $gaz = $this->getCmd(null, 'gaz');
+		if (is_object($gaz)) {
+            $gaz->remove();
+        }
+            
         // INFO Température foyer
         $foyer = $this->getCmd(null, 'foyer');
 		if (!is_object($foyer)) {
@@ -247,24 +253,6 @@ class heta extends eqLogic {
 		$timeToService->setType('info');
 		$timeToService->setSubType('numeric');
 		$timeToService->save();	
-        
-        /*
-        // INFO Modèle 
-        $modele = $this->getCmd(null, 'modele');
-		if (!is_object($modele)) {
-            $modele = new hetaCmd();
-            $modele->setIsVisible(0);
-    		$modele->setLogicalId('modele');
-            $modele->setTemplate('dashboard','line');
-            $modele->setTemplate('mobile','line');
-            $modele->setUnite('h');
-            $modele->setName(__('Info Modèle', __FILE__));
-		}
-		$modele->setEqLogic_id($this->getId());
-		$modele->setType('info');
-		$modele->setSubType('numeric');
-        $modele->save();
-        */	
 
         // INFO Allumage 
         $allumage = $this->getCmd(null, 'allumage');
@@ -497,7 +485,6 @@ class hetaCmd extends cmd {
 			case 'refresh':
                 log::add('heta', 'info', $this->getHumanName(). ' action Refresh');
                 $eqLogic->getHetaStatus();
-                //$eqLogic->refreshWidget();
                 break;
             case 'thermostat':
                 if (!isset($_options['slider']) || $_options['slider'] == '' || !is_numeric(intval($_options['slider']))) {
