@@ -124,7 +124,7 @@ class hetaResult {
 
 class fumis {
     /*     * *************************Attributs****************************** */
-    const FUMISURL = "http://api.fumis.si/v1/status/";
+    const FUMISURL = "https://api.fumis.si/v1/status/";
     const APPNAME  = "heta";
     const APIVERSION = "1";
 
