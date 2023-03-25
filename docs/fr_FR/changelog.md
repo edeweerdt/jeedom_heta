@@ -43,6 +43,12 @@ Add 15 octobre 2020
 -   Ajout de la valeur de puissance
 -   Ajout de la valeur de ventilation
 -   Ajout statistic
-Nécessite de réenregistrer l'objet
+-   Nécessite de réenregistrer l'objet
+
+Fix 25 mars 2023
+---
+
+-   Correction connexion avec le serveur Fumis
+
 
 [Documentation](index.md)

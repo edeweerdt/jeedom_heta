@@ -43,6 +43,11 @@ Add 15 de octubre de 2020
 - Valor energético añadido
 - Valor de ventilación añadido
 - Adición estadística
-Requiere volver a registrar el objeto
+- Requiere volver a registrar el objeto
+
+Fijo 25 de marzo de 2023
+---
+
+- Conexión fija con el servidor Fumis
 
 [Documentation](index.md)
