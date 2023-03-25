@@ -43,6 +43,11 @@ Add 15 octobre 2020
 - Adding power value
 - Adding ventilation value
 - Adding statistic
-Saving object is needed
+- Saving object is needed
+
+Fixed March 25, 2023
+---
+
+- Fixed connection with the Fumis server
 
 [Documentation](index.md)

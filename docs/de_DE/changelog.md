@@ -43,6 +43,11 @@ Add 15. Oktober 2020
 - Leistungswert hinzugefügt
 - Belüftungswert hinzugefügt
 - Statistische Ergänzung
-Erfordert eine erneute Registrierung des Objekts
+- Erfordert eine erneute Registrierung des Objekts
+
+Behoben am 25. März 2023
+---
+
+- Verbindung mit dem Fumis-Server behoben
 
 [Documentation](index.md)
